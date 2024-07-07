@@ -16,6 +16,21 @@ def checkout(skus):
             return -1
 
     result = 0
+    
+    for s, u in freeItems.items():
+        for v in u:
+            if counts[s] > 1:
+                if counts[s] // v[0] >= counts[v[1]]:
+                    counts[v[1]] = 0
+                else:
+                    counts[v[1]] -= counts[s] // v[0]
+
+    for s, u in modRules.items():
+        for v in u:
+            if counts[s] // v[0] > 0:
+                result += v[1] * (counts[s] // v[0])
+                counts[s] %= v[0]
+    
     for offer in multiBuyOffers:
         b = 0
         for s in offer[0]:
@@ -35,24 +50,11 @@ def checkout(skus):
                     result += offer[1][1] * (counts[s] // offer[1][0])
                     b -= (counts[s] // offer[1][0]) * offer[1][0]
                     counts[s] %= offer[1][0]
-    
-    for s, u in freeItems.items():
-        for v in u:
-            if counts[s] > 1:
-                if counts[s] // v[0] >= counts[v[1]]:
-                    counts[v[1]] = 0
-                else:
-                    counts[v[1]] -= counts[s] // v[0]
-
-    for s, u in modRules.items():
-        for v in u:
-            if counts[s] // v[0] > 0:
-                result += v[1] * (counts[s] // v[0])
-                counts[s] %= v[0]
 
     for s in alpha:
         result += prices[s] * counts[s]
     
     return result
+
 
 
