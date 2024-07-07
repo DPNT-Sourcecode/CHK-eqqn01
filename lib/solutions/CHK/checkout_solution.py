@@ -25,6 +25,7 @@ def checkout(skus):
         remainingOfferItems = offer[1][0]
         loops = 2
         while loops > 0:
+            print ("1-", b, counts, remainingOfferItems)
             loops -= 1
             for s in offer[0]:
                 if b >= remainingOfferItems:
@@ -41,6 +42,8 @@ def checkout(skus):
                     b -= (counts[s] // offer[1][0]) * offer[1][0]
                     counts[s] %= offer[1][0]
     
+
+    print ("2-", b, counts, remainingOfferItems)
     for s, u in freeItems.items():
         for v in u:
             if counts[s] > 1:
@@ -59,6 +62,13 @@ def checkout(skus):
         result += prices[s] * counts[s]
     
     return result
+
+print(checkout('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ'))
+
+
+ #- {"method":"checkout","params":["ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ"],"id":"CHK_R5_147"}, expected: 1602, got: 1605
+ #- {"method":"checkout","params":["LGCKAQXFOSKZGIWHNRNDITVBUUEOZXPYAVFDEPTBMQLYJRSMJCWH"],"id":"CHK_R5_148"}, expected: 1602, got: 1605
+
 
 
 
