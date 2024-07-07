@@ -17,6 +17,28 @@ def checkout(skus):
 
     result = 0
     
+    for offer in multiBuyOffers:
+        b = 0
+        for s in offer[0]:
+            b += counts[s]
+        
+        remainingOfferItems = offer[1][0]
+        if b >= offer[1][0]:
+            for s in offer[0]:
+                print (counts, b)
+                c = min(remainingOfferItems, counts[s])
+                remainingOfferItems -= c
+                counts[s] -= c
+                b -= c
+                if remainingOfferItems == 0:
+                    result += offer[1][1]
+                    remainingOfferItems = offer[1][0]
+                
+                if remainingOfferItems == offer[1][0]:
+                    result += offer[1][1] * (counts[s] // offer[1][0])
+                    b -= (counts[s] // offer[1][0]) * offer[1][0]
+                    counts[s] %= offer[1][0]
+    
     for s, u in freeItems.items():
         for v in u:
             if counts[s] > 1:
@@ -30,32 +52,12 @@ def checkout(skus):
             if counts[s] // v[0] > 0:
                 result += v[1] * (counts[s] // v[0])
                 counts[s] %= v[0]
-    
-    for offer in multiBuyOffers:
-        b = 0
-        for s in offer[0]:
-            b += counts[s]
-        
-        remainingOfferItems = offer[1][0]
-        if b >= offer[1][0]:
-            for s in offer[0]:
-                c = min(remainingOfferItems, counts[s])
-                remainingOfferItems -= c
-                counts[s] -= c
-                b -= c
-                if remainingOfferItems == 0:
-                    result += offer[1][1]
-                    remainingOfferItems = offer[1][0]
-                
-                if remainingOfferItems == offer[1][0]:
-                    result += offer[1][1] * (counts[s] // offer[1][0])
-                    b -= (counts[s] // offer[1][0]) * offer[1][0]
-                    counts[s] %= offer[1][0]
 
     for s in alpha:
         result += prices[s] * counts[s]
     
     return result
 
+print(checkout('STXS'))
 
 
