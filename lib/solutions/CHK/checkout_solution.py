@@ -22,15 +22,16 @@ def checkout(skus):
         for s in offer[0]:
             b += counts[s]
         
-        if b // offer[1][0] > 0:
+        '''if b // offer[1][0] > 0:
             for s in offer[0]:
                 result += offer[1][1] * (counts[s] // offer[1][0])
                 b -= (counts[s] // offer[1][0]) * offer[1][0]
-                counts[s] %= offer[1][0]
+                counts[s] %= offer[1][0]'''
         
         while b > offer[1][0]:
             result += offer[1][1]
             for s in offer[0]:
+                print(counts[s])
                 if b > counts[s]:
                     b -= counts[s]
                     counts[s] = 0
