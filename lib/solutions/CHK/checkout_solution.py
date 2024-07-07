@@ -22,15 +22,14 @@ def checkout(skus):
             b += counts[s]
         
         while b >= offer[1][0]:
-            print(b, counts)
             remainingOfferItems = offer[1][0]
             for s in offer[0]:
                 c = min(remainingOfferItems, counts[s])
                 remainingOfferItems -= c
                 counts[s] -= c
+                b -= c
                 if remainingOfferItems == 0:
                     result += offer[1][1]
-                    b -= offer[1][0]
                     remainingOfferItems = offer[1][0]
                 
                 if remainingOfferItems == offer[1][0]:
@@ -56,5 +55,3 @@ def checkout(skus):
         result += prices[s] * counts[s]
     
     return result
-
-print(checkout("STXSTX"))
