@@ -8,6 +8,9 @@ def checkout(skus):
     freeItems = {'E': [(2, 'B')], 'N': [(3, 'M')], 'R': [(3, 'Q')]}
     modRules = {'A': [(5, 200), (3, 130)], 'B': [(2, 45)], 'F': [(3, 20)], 'H': [(10, 80), (4, 45)], 'K': [(2, 150)], 'P': [(5, 200)], 'Q': [(3, 80)], 'U': [(4, 120)], 'V': [(3, 130), (2, 90)]}
 
+    if len(skusChars) == 0:
+        return -1
+    
     for s in skusChars:
         if s in alpha:
             counts[s] += 1
@@ -32,5 +35,6 @@ def checkout(skus):
         result += prices[s] * counts[s]
     
     return result
+
 
 
