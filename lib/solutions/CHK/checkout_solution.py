@@ -25,7 +25,9 @@ def checkout(skus):
         remainingOfferItems = offer[1][0]
 
         for s in offer[0]:
-            while counts[s] >= 0 and b > offer[1][0]:
+            print ("0-", b, counts, remainingOfferItems)
+            while counts[s] > 0 and b >= offer[1][0]:
+                print ("1-", b, counts, remainingOfferItems)
                 if b >= remainingOfferItems:
                     c = min(remainingOfferItems, counts[s])
                     remainingOfferItems -= c
@@ -67,4 +69,5 @@ print(checkout('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ'))
 
  #- {"method":"checkout","params":["ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ"],"id":"CHK_R5_147"}, expected: 1602, got: 1605
  #- {"method":"checkout","params":["LGCKAQXFOSKZGIWHNRNDITVBUUEOZXPYAVFDEPTBMQLYJRSMJCWH"],"id":"CHK_R5_148"}, expected: 1602, got: 1605
+
 
