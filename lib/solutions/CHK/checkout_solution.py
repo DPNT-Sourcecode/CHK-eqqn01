@@ -2,9 +2,9 @@
 # skus = unicode string
 def checkout(skus):
     skusChars = sorted(list(skus))
-    counts = {'A': 0, 'B': 0, 'C': 0, 'D': 0, 'E': 0}
+    counts = {'A': 0, 'B': 0, 'C': 0, 'D': 0, 'E': 0, 'F': 0}
     for s in skusChars:
-        if s in ['A','B','C','D','E']:
+        if s in ['A','B','C','D','E','F']:
             counts[s] += 1
         else:
             return -1
@@ -26,9 +26,6 @@ def checkout(skus):
     result += 20 * counts['C']
     result += 15 * counts['D']
     result += 40 * counts['E']
+    result += 10 * (counts['F'] % 3) + 20 * (counts['F'] // 3)
 
     return result
-
-
-
-
