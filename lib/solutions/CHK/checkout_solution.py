@@ -22,7 +22,7 @@ def checkout(skus):
                 if counts[s] // v[0] >= counts[v[1]]:
                     counts[v[1]] = 0
                 else:
-                    counts[v[0]] -= counts[s] // v[0]
+                    counts[v[1]] -= counts[s] // v[0]
 
     for s, u in modRules.items():
         for v in u:
@@ -34,6 +34,4 @@ def checkout(skus):
         result += prices[s] * counts[s]
     
     return result
-
-print(checkout('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ'))
 
