@@ -36,6 +36,7 @@ def checkout(skus):
         for s in offer[0]:
             b += counts[s]
         
+        remainingOfferItems = offer[1][0]
         if b >= offer[1][0]:
             for s in offer[0]:
                 c = min(remainingOfferItems, counts[s])
@@ -50,11 +51,11 @@ def checkout(skus):
                     result += offer[1][1] * (counts[s] // offer[1][0])
                     b -= (counts[s] // offer[1][0]) * offer[1][0]
                     counts[s] %= offer[1][0]
-            break
 
     for s in alpha:
         result += prices[s] * counts[s]
     
     return result
+
 
 
