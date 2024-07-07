@@ -55,3 +55,4 @@ def checkout(skus):
         result += prices[s] * counts[s]
     
     return result
+
