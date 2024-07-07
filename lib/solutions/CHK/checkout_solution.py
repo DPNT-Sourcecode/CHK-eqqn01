@@ -50,9 +50,11 @@ def checkout(skus):
                     result += offer[1][1] * (counts[s] // offer[1][0])
                     b -= (counts[s] // offer[1][0]) * offer[1][0]
                     counts[s] %= offer[1][0]
+            break
 
     for s in alpha:
         result += prices[s] * counts[s]
     
     return result
+
 
