@@ -23,10 +23,11 @@ def checkout(skus):
     
     result += 50 * (counts['A'] % 3) + 130 * (counts['A'] // 3)
     result += 30 * (counts['B'] % 2) + 45 * (counts['B'] // 2)
-    result += 20 * counts['C'] + 15 * counts['D']
+    result += 20 * counts['C']
     result += 15 * counts['D']
     result += 40 * counts['E']
 
     return result
+
 
 
