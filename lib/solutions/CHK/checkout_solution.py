@@ -12,7 +12,7 @@ def checkout(skus):
     result = 0
 
     if counts['E'] > 1:
-        if counts['E'] // 2 >= counst['B']:
+        if counts['E'] // 2 >= counts['B']:
             counts['B'] = 0
         else:
             counts['B'] -= counts['E'] // 2
@@ -28,6 +28,7 @@ def checkout(skus):
     result += 40 * counts['E']
 
     return result
+
 
 
 
