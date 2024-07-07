@@ -56,4 +56,3 @@ def checkout(skus):
     
     return result
 
-print(checkout('X'))
