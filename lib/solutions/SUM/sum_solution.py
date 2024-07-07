@@ -5,5 +5,3 @@ def compute(x, y):
             return x + y
         raise ValueError("expecting values between 1 and 100 for x and y")
     raise TypeError("expecting integer values for x and y")
-
-
