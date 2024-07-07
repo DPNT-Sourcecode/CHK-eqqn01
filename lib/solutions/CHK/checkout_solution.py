@@ -37,3 +37,5 @@ def checkout(skus):
         result += prices[s] * counts[s]
     
     return result
+
+print(checkout('A'))
